@@ -30,7 +30,7 @@ func TestParallelSingleton(t *testing.T) {
 			wg.Done()
 		}(i)
 	}
-
+	// 关闭channel，所有协程同时开始运行，实现并行(parallel)
 	close(start)
 	wg.Wait()
 	for i := 1; i < parCount; i++ {
